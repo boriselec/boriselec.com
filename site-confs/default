@@ -1,28 +1,28 @@
 # redirect all traffic to https
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
-	server_name _;
-	return 301 https://$host$request_uri;
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+    return 301 https://$host$request_uri;
 }
 
 # main server block
 server {
-	listen 443 ssl http2 default_server;
-	listen [::]:443 ssl http2 default_server;
+    listen 443 ssl http2 default_server;
+    listen [::]:443 ssl http2 default_server;
 
-	root /config/www;
-	index index.html index.htm index.php;
+    root /config/www;
+    index index.html index.htm index.php;
 
-	server_name _;
+    server_name _;
 
-	# enable subfolder method reverse proxy confs
-	include /config/nginx/proxy-confs/*.subfolder.conf;
+    # enable subfolder method reverse proxy confs
+    include /config/nginx/proxy-confs/*.subfolder.conf;
 
-	# all ssl related config moved to ssl.conf
-	include /config/nginx/ssl.conf;
+    # all ssl related config moved to ssl.conf
+    include /config/nginx/ssl.conf;
 
-	client_max_body_size 0;
+    client_max_body_size 0;
 
     location / {
         try_files $uri $uri/ =404;
@@ -31,7 +31,7 @@ server {
     location /octordle/ {
         proxy_pass http://octordle:80/;
         include /config/nginx/proxy.conf;
-	}
+    }
 }
 
 # enable subdomain method reverse proxy confs
