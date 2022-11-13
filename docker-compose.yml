@@ -13,8 +13,8 @@ services:
             - 443:443
             - 80:80
         volumes:
-            - ${CONFIG_PATH}/site-confs:/config/nginx/site-confs
+            - /root/boriselec.com/site-confs:/config/nginx/site-confs
         environment:
             - EMAIL=boris-elec@mail.ru
-            - URL=${HOST_URL}
+            - URL=boriselec.com
             - VALIDATION=http
