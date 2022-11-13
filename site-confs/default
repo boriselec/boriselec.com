@@ -24,6 +24,10 @@ server {
 
 	client_max_body_size 0;
 
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
     location /octordle/ {
         proxy_pass http://octordle:80/;
         include /config/nginx/proxy.conf;
