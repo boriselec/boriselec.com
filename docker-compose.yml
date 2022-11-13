@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+    octordle:
+        image: ghcr.io/boriselec/octordle-ru:ru
+        container_name: octordle
+    proxy:
+        image: linuxserver/letsencrypt
+        container_name: proxy
+        depends_on:
+            - "octordle"
+        ports:
+            - 443:443
+            - 80:80
+        volumes:
+            - ${CONFIG_PATH}/site-confs:/config/nginx/site-confs
+        environment:
+            - EMAIL=boris-elec@mail.ru
+            - URL=${HOST_URL}
+            - VALIDATION=http
