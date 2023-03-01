@@ -8,7 +8,7 @@ services:
         image: ghcr.io/boriselec/rimworld_artaiserver:main
         container_name: rimworld-art
         volumes:
-            - "./images:/mnt/images"
+            - "./www/rimworld-art/images:/mnt/images"
             - "./secret:/mnt/secret"
         environment:
             - GCP_PROJECT=${RIMWORLD_ART_GCP_PROJECT}
