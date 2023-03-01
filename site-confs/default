@@ -32,6 +32,11 @@ server {
         proxy_pass http://octordle:80/;
         include /config/nginx/proxy.conf;
     }
+
+    location /rimworld-art/generate {
+        proxy_pass http://rimworld-art:8080/generate;
+        include /config/nginx/proxy.conf;
+    }
 }
 
 # enable subdomain method reverse proxy confs
