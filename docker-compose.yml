@@ -12,7 +12,7 @@ services:
         logging:
             driver: local
             options:
-                max-file: 20
+                max-file: "20"
         volumes:
             - "./www/rimworld-art/images:/mnt/images"
             - "./secret:/mnt/secret"
