@@ -4,9 +4,15 @@ services:
     octordle:
         image: ghcr.io/boriselec/octordle-ru:ru
         container_name: octordle
+        logging:
+            driver: local
     rimworld-art:
         image: ghcr.io/boriselec/rimworld_artaiserver:main
         container_name: rimworld-art
+        logging:
+            driver: local
+            options:
+                max-file: 20
         volumes:
             - "./www/rimworld-art/images:/mnt/images"
             - "./secret:/mnt/secret"
@@ -17,6 +23,8 @@ services:
     proxy:
         image: linuxserver/letsencrypt
         container_name: proxy
+        logging:
+            driver: local
         depends_on:
             - "octordle"
             - "rimworld-art"
