@@ -25,6 +25,13 @@ services:
         volumes:
             - ./prometheus/:/etc/prometheus/
             - ./prometheus_data:/prometheus
+    grafana:
+        image: grafana/grafana-oss
+        volumes:
+            - ./grafana/:/var/lib/grafana
+        environment:
+            - GF_SERVER_ROOT_URL=https://boriselec.com/grafana
+            - GF_SERVER_SERVE_FROM_SUB_PATH=true
     proxy:
         image: linuxserver/letsencrypt
         container_name: proxy
