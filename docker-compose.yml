@@ -20,6 +20,7 @@ services:
             - GCP_PROJECT=${RIMWORLD_ART_GCP_PROJECT}
             - GCP_ZONE=${RIMWORLD_ART_GCP_ZONE}
             - GCP_INSTANCE=${RIMWORLD_ART_GCP_INSTANCE}
+            - GENERATOR_URL=false
     prometheus:
         image: prom/prometheus
         volumes:
