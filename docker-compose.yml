@@ -29,6 +29,7 @@ services:
             - ./prometheus_data:/prometheus
         logging:
             driver: local
+        restart: on-failure
     grafana:
         image: grafana/grafana-oss
         volumes:
