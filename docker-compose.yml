@@ -37,6 +37,7 @@ services:
         environment:
             - GF_SERVER_ROOT_URL=https://boriselec.com/grafana
             - GF_SERVER_SERVE_FROM_SUB_PATH=true
+            - GF_FEATURE_TOGGLES_ENABLE=publicDashboards
         logging:
             driver: local
     proxy:
