@@ -38,6 +38,13 @@ services:
             - GF_SERVER_ROOT_URL=https://boriselec.com/grafana
             - GF_SERVER_SERVE_FROM_SUB_PATH=true
             - GF_FEATURE_TOGGLES_ENABLE=publicDashboards
+            - GF_SMTP_ENABLED=true
+            - GF_SMTP_HOST=smtp.gmail.com:587
+            - GF_SMTP_USER=${GRAFANA_GMAIL_MAIL}
+            - GF_SMTP_FROM_ADDRESS=${GRAFANA_GMAIL_MAIL}
+            - GF_SMTP_FROM_NAME=Alert
+            - GF_SMTP_PASSWORD=${GRAFANA_GMAIL_PASS}
+            - GF_SMTP_SKIP_VERIFY=true
         logging:
             driver: local
     proxy:
