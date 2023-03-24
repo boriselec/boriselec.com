@@ -21,6 +21,8 @@ services:
             - GCP_ZONE=${RIMWORLD_ART_GCP_ZONE}
             - GCP_INSTANCE=${RIMWORLD_ART_GCP_INSTANCE}
             - GCP_IDLE_STOPAFTERSECONDS=${RIMWORLD_ART_GCP_IDLE_STOPAFTERSECONDS}
+            - QUEUE_SIZE_MAX=${RIMWORLD_ART_QUEUE_SIZE_MAX}
+            - LIMIT_USER=${RIMWORLD_ART_LIMIT_USER}
             - GENERATOR_URL=false
     prometheus:
         image: prom/prometheus
