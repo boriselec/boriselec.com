@@ -23,6 +23,7 @@ services:
             - GCP_IDLE_STOPAFTERSECONDS=${RIMWORLD_ART_GCP_IDLE_STOPAFTERSECONDS}
             - QUEUE_SIZE_MAX=${RIMWORLD_ART_QUEUE_SIZE_MAX}
             - LIMIT_USER=${RIMWORLD_ART_LIMIT_USER}
+            - PRIORITY_USERID_LIST=${RIMWORLD_ART_PRIORITY_USERID_LIST}
             - GENERATOR_URL=false
     prometheus:
         image: prom/prometheus
