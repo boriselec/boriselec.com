@@ -37,8 +37,8 @@ server {
         autoindex on;
     }
 
-    location /rimworld-art {
-        proxy_pass http://rimworld-art:8080;
+    location /rimworld-art/ {
+        proxy_pass http://rimworld-art:8080/;
         include /config/nginx/proxy.conf;
     }
 
