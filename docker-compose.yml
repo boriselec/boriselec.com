@@ -28,15 +28,17 @@ services:
             - GENERATOR_URL=false
     prometheus:
         image: prom/prometheus
+        user: "0:0"
         container_name: prometheus
         volumes:
             - ./prometheus/:/etc/prometheus/
-            - ./prometheus_data:/prometheus:z
+            - ./prometheus_data:/prometheus
         logging:
             driver: local
         restart: on-failure
     grafana:
         image: grafana/grafana-oss
+        user: "0:0"
         container_name: grafana
         volumes:
             - ./grafana/:/var/lib/grafana
