@@ -30,7 +30,7 @@ services:
         image: prom/prometheus
         volumes:
             - ./prometheus/:/etc/prometheus/
-            - ./prometheus_data:/prometheus
+            - ./prometheus_data:/prometheus:z
         logging:
             driver: local
         restart: on-failure
