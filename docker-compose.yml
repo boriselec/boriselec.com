@@ -8,7 +8,7 @@ services:
             driver: local
     rimworld-art:
         image: ghcr.io/boriselec/rimworld_artaiserver:main
-        container_name: rimworld-art
+        container_name: rim
         logging:
             driver: local
             options:
@@ -28,6 +28,7 @@ services:
             - GENERATOR_URL=false
     prometheus:
         image: prom/prometheus
+        container_name: prometheus
         volumes:
             - ./prometheus/:/etc/prometheus/
             - ./prometheus_data:/prometheus:z
@@ -36,6 +37,7 @@ services:
         restart: on-failure
     grafana:
         image: grafana/grafana-oss
+        container_name: grafana
         volumes:
             - ./grafana/:/var/lib/grafana
         environment:
