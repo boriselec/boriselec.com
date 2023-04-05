@@ -24,6 +24,7 @@ services:
             - QUEUE_SIZE_MAX=${RIMWORLD_ART_QUEUE_SIZE_MAX}
             - LIMIT_USER=${RIMWORLD_ART_LIMIT_USER}
             - PRIORITY_USERID_LIST=${RIMWORLD_ART_PRIORITY_USERID_LIST}
+            - IMAGE_FOLDER_LIMIT=${RIMWORLD_ART_IMAGE_FOLDER_LIMIT}
             - GENERATOR_URL=false
     prometheus:
         image: prom/prometheus
