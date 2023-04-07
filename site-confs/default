@@ -46,6 +46,10 @@ server {
         return 302 /grafana/public-dashboards/e186aed2c73c48d2859dfc755cccb0fe?orgId=1;
     }
 
+    location /grafana/public-dashboards/9b4993155a504e83813097b0124763e8?orgId=1 {
+        return 302 /rimworld-art/status
+    }
+
     location /grafana/ {
         proxy_pass http://grafana:3000;
         include /config/nginx/proxy.conf;
