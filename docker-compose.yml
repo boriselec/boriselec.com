@@ -53,6 +53,7 @@ services:
             - GF_SMTP_FROM_NAME=Alert
             - GF_SMTP_PASSWORD=${GRAFANA_GMAIL_PASS}
             - GF_SMTP_SKIP_VERIFY=true
+            - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASS}
         logging:
             driver: local
     proxy:
