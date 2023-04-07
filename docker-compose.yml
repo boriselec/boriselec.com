@@ -38,10 +38,10 @@ services:
         restart: on-failure
     grafana:
         image: grafana/grafana-oss
-        user: "0:0"
         container_name: grafana
         volumes:
-            - ./grafana/:/var/lib/grafana
+            - ./grafana/datasources:/etc/grafana/provisioning/datasources/
+            - ./grafana/dashboards:/etc/grafana/provisioning/dashboards/
         environment:
             - GF_SERVER_ROOT_URL=https://boriselec.com/grafana
             - GF_SERVER_SERVE_FROM_SUB_PATH=true
