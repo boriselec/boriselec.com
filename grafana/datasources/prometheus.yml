@@ -4,6 +4,7 @@ datasources:
   - name: Prometheus
     type: prometheus
     url: http://prometheus:9090
+    uid: "r1VOldL4z"
     jsonData:
       httpMethod: POST
       manageAlerts: true
