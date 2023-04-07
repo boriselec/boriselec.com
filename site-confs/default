@@ -47,7 +47,7 @@ server {
     }
 
     location /grafana/public-dashboards/9b4993155a504e83813097b0124763e8?orgId=1 {
-        return 302 /rimworld-art/status
+        return 302 /rimworld-art/status;
     }
 
     location /grafana/ {
