@@ -36,7 +36,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
           "custom": {
             "axisCenteredZero": false,
@@ -78,15 +78,112 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "B"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "super-light-yellow",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "C"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "yellow",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "E"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-green",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "F"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "transparent",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 3,
@@ -95,6 +192,7 @@
         "y": 0
       },
       "id": 5,
+      "maxDataPoints": 10000,
       "options": {
         "legend": {
           "calcs": [],
@@ -114,10 +212,71 @@
             "uid": "r1VOldL4z"
           },
           "editorMode": "code",
-          "expr": "gcp_running",
+          "expr": "1",
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "r1VOldL4z"
+          },
+          "editorMode": "code",
+          "expr": "max((gcp_status == 1) or on() vector(0))",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "r1VOldL4z"
+          },
+          "editorMode": "code",
+          "expr": "max((gcp_status == 2) or on() vector(0))",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "r1VOldL4z"
+          },
+          "editorMode": "code",
+          "expr": "max((gcp_status == 3) or on() vector(0))",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "r1VOldL4z"
+          },
+          "editorMode": "code",
+          "expr": "max((gcp_status == 4) or on() vector(0))",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "r1VOldL4z"
+          },
+          "editorMode": "code",
+          "expr": "max((gcp_status == 5) or on() vector(0))",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "F"
         }
       ],
       "type": "timeseries"
@@ -187,7 +346,7 @@
             "uid": "r1VOldL4z"
           },
           "editorMode": "code",
-          "expr": "gcp_running",
+          "expr": "max((gcp_status == 3) or on() vector(0))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -844,6 +1003,6 @@
   "timezone": "",
   "title": "rimm",
   "uid": "nNOYUOY4k",
-  "version": 8,
+  "version": 9,
   "weekStart": ""
 }
