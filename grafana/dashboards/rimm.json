@@ -359,26 +359,131 @@
         "type": "prometheus",
         "uid": "r1VOldL4z"
       },
-      "description": "daily usage",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "transparent",
+            "mode": "fixed"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
           },
           "mappings": [],
           "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
+          "min": 0
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
               {
-                "color": "green",
-                "value": null
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "B"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "C"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "D"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "E"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#000000",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "F"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "G"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
               }
             ]
           }
-        },
-        "overrides": []
+        ]
       },
       "gridPos": {
         "h": 3,
@@ -389,7 +494,15 @@
       "id": 7,
       "maxDataPoints": 1000,
       "options": {
-        "orientation": "vertical",
+        "displayLabels": [
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "pieType": "donut",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -397,8 +510,10 @@
           "fields": "",
           "values": false
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": false
+        "tooltip": {
+          "mode": "none",
+          "sort": "none"
+        }
       },
       "pluginVersion": "9.4.7",
       "targets": [
@@ -408,14 +523,86 @@
             "uid": "r1VOldL4z"
           },
           "editorMode": "code",
-          "expr": "avg_over_time((max((gcp_status == 3) or on() vector(0)))[24h:1m])*100/3",
+          "expr": "avg_over_time((max((gcp_status == 1) or on() vector(0)))[24h:1m])/1",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "r1VOldL4z"
+          },
+          "editorMode": "code",
+          "expr": "avg_over_time((max((gcp_status == 2) or on() vector(0)))[24h:1m])/2",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "r1VOldL4z"
+          },
+          "editorMode": "code",
+          "expr": "avg_over_time((max((gcp_status == 3) or on() vector(0)))[24h:1m])/3",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "r1VOldL4z"
+          },
+          "editorMode": "code",
+          "expr": "avg_over_time((max((gcp_status == 4) or on() vector(0)))[24h:1m])/4",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "r1VOldL4z"
+          },
+          "editorMode": "code",
+          "expr": "avg_over_time((max((gcp_status == 5) or on() vector(0)))[24h:1m])/5",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "r1VOldL4z"
+          },
+          "editorMode": "code",
+          "expr": "avg_over_time((max(((gcp_status == 0)+1) or on() vector(0)))[24h:1m])",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "r1VOldL4z"
+          },
+          "editorMode": "code",
+          "expr": "avg_over_time((max(absent(gcp_status) or on() vector(0)))[24h:1m])",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "G"
         }
       ],
-      "type": "gauge"
+      "type": "piechart"
     },
     {
       "datasource": {
@@ -1004,6 +1191,6 @@
   "timezone": "",
   "title": "rimm",
   "uid": "nNOYUOY4k",
-  "version": 10,
+  "version": 11,
   "weekStart": ""
 }
