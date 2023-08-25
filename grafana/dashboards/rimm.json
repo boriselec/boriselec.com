@@ -408,7 +408,8 @@
             "uid": "r1VOldL4z"
           },
           "editorMode": "code",
-          "expr": "avg_over_time(gcp_running[24h])*100",
+          "expr": "avg_over_time((max((gcp_status == 3) or on() vector(0)))[24h:1m])*100/3",
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1003,6 +1004,6 @@
   "timezone": "",
   "title": "rimm",
   "uid": "nNOYUOY4k",
-  "version": 9,
+  "version": 10,
   "weekStart": ""
 }
