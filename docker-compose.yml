@@ -13,6 +13,7 @@ services:
             driver: local
             options:
                 max-file: "20"
+        restart: on-failure
         volumes:
             - "./www/rimworld-art/images:/mnt/images"
             - "./secret:/mnt/secret"
